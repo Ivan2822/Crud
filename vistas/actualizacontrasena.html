@@ -1,0 +1,33 @@
+<div class="container" ng-init="inicio()" style="width: 80%">
+
+    <fieldset>
+          <legend>Actualiza Contraseña</legend>
+    </fieldset>
+
+    <div class="row">
+
+      <form name="mi_formulario">
+
+        <div class="row">
+
+        <div class="col-md-2">
+          <label for="folio">Contraseña</label>
+          <input type="password" class="form-control" ng-model="registra.nuevacon" name="mi_clave" maxlength="12">
+        </div>
+
+        <div class="col-md-2">
+          <label for="folio">Repite Contraseña</label>
+          <input type="password" class="form-control" ng-model="registra.nuevacon1" name="mi_clave2" maxlength="12">
+        </div>
+
+        </div>
+
+        <div ng-show="mensajecon" class="alert  animate-show text-center" ng-class="tipoalerta">{{mensajecon}}</div>
+
+        <button type="button" class="btn btn-primary btn-lg" tooltip-placement="bottom" ng-click="valida()">Actualiza</button>
+
+      </form>
+        
+    </div>
+         
+</div>

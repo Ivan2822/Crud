@@ -1,0 +1,116 @@
+<div ng-init="inicio()">
+	<div class="row">
+		<div class="col-md-6">
+			<h1>Busqueda de Colaboradores</h1>
+		</div>
+	</div>
+
+	<fieldset>
+		<legend>Datos</legend>
+	</fieldset>
+		<div class="row">
+			<div class="col-md-2">
+		        <label for="folio">N° Colaborador</label>
+		        <input type="text" id="folio" class="form-control " ng-model="datos.numeroempleado" folio>
+		    </div>
+			<div class="col-md-4">
+		        <label for="folio">Lesionado </label>
+		        <input type="text" id="lesionado" class="form-control" ng-model="datos.lesionado" mayusculas>
+		    </div>
+		    <div class="col-md-2">
+		    	<label></label>
+				<button type="button"  ng-click="buscar()" data-loading-text="Buscando..." class="btn btn-primary btn-block">Buscar</button>
+			</div>
+		</div>
+		<br>
+	<br>
+	<div class="table-responsive">
+		<table datatable="ng" dt-options="dtOptions" class="table">
+	        <thead>
+	        <tr>
+	            <th>N° Colaborador</th>
+	            <th>Nombre Empleado</th>
+	            <th>Fecha Ingreso</th>
+	            <th>División</th>
+	            <th>Área</th>
+	            <th>Días de Vacaciones</th>
+	            <th>Días Tomados</th>
+	            <th>Días Restantes</th>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        <tr ng-repeat="detalle in detalles">
+	            <td>{{ detalle.EMP_claveempleado }}</td>
+	            <td>{{ detalle.EMP_nombre }} {{ detalle.EMP_paterno }} {{ detalle.EMP_materno }}</td>
+	            <td>{{ detalle.EMP_fechaingreso }}</td>
+	            <td>{{ detalle.DIV_division }}</td>
+	            <td>{{ detalle.ARE_area }}</td>
+	            <td>{{ detalle.EMP_diasvacaciones }}</td>
+	            <td>{{ detalle.EMP_tomados }}</td>
+	            <td>{{ detalle.EMP_diasrestantes }}</td>
+	        </tr>
+	        </tbody>
+	    </table>
+	</div>
+
+
+<div  id="ventanadetalle" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog ">
+		<form name="tram" novalidate>
+		<div class="modal-content">
+			<div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+		        <h3 class="modal-title text-center text-danger">{{nombre}}</h3>
+
+		        <br>
+		    </div>
+		  	<div class="modal-body">
+
+		  	   <div class="table-responsive">
+                <table class="table">
+                  
+                  <thead>
+                      <tr>
+                      	<th><a href="" ng-click="predicate = 'clave'; reverse=!reverse">Clave</a></th>
+                        <th><a href="" ng-click="predicate = 'fecha'; reverse=!reverse">Dias Tomados</a></th>
+                        <th><a href="" ng-click="predicate = 'cliente'; reverse=!reverse">Fecha Inicial</a></th>
+                        <th><a href="" ng-click="predicate = 'unidad'; reverse=!reverse">Fecha Final</a></th>
+                        <th><a href="" ng-click="predicate = 'lesionado'; reverse=!reverse">Fecha de Solicitud</a></th>
+                        <th><a href="" ng-click="predicate = 'lesionado'; reverse=!reverse">Estatus</a></th>
+                        <th><a href="" ng-click="predicate = 'lesionado'; reverse=!reverse">Descripción</a></th>
+
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                      <tr ng-repeat="detalle in detallesD">
+
+                        <td>{{detalle.clave}}</td>
+                        <td>{{detalle.SOE_diasvacasiones}}</td>
+                        <td>{{detalle.SOE_fechainicio}}</td>
+                        <td>{{detalle.SOE_fechafin}}</td>
+                        <td>{{detalle.SOE_fechasolicitud}}</td>
+                        <td>{{detalle.estatus}}</td>
+                        <td>{{detalle.SOE_observaciones}}</td>
+
+                      </tr> 
+                  </tbody>
+                  
+                  </table>
+              </div>
+
+
+		  	</div>
+		  	<br>
+		  	<div class="modal-footer">
+
+		        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+		    </div>
+		</div>
+		</form>
+	</div>
+</div>
+
+
+</div>

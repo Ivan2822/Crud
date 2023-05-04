@@ -1,0 +1,34 @@
+<div ng-init="inicio()">
+      <div class="container">
+         <h2 class="text-center">Usuarios Registrados</h2>
+         <br>
+         <div class="table-responsive">
+            <table class="table table-striped table-hover">
+               <thead>
+                  <tr>
+                    
+                    <th >Nombre</th>
+                    <th >Apellido Paterno</th>
+                    <th >Apellido Materno</th>
+                    <th >Edad</th>
+                    <th >Email</th>
+                    <th >Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="listado in listadoPC">
+                     <td style="color: #aaa">{{$index + 1}}</td>
+                     <td>{{listado.usu_nombre}}</td>
+                     <td>{{listado.usu_apaterno}}</td>
+                     <td>{{listado.usu_amaterno}}</td>
+                     <td>{{listado.usu_email}}</td>
+                     <td align="center"><a ng-href="" ng-click="detalle(listado.usu_id)">Editar</a></td>
+                   </tr>
+                </tbody>
+            </table>
+         </div>
+      </div>
+
+    
+
+</div>

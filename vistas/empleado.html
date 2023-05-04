@@ -1,0 +1,88 @@
+<div class="container" ng-init="inicio()">
+      <div class="panel panel-info">
+                <div class="panel-heading">
+                         <h3 class="panel-title" >Alta de Usuario</h3>
+                </div>       
+         <div class="panel-body">
+            <form  ng-submit="guarda()"  class="row g-2">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Nombre: </span>
+                        <input type="text" class="form-control"  ng-model="empleado.nombre">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">A Parteno: </span>
+                        <input type="text" ng-model="empleado.paterno" class="form-control" >
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">A Materno: </span>
+                        <input type="text" ng-model="empleado.materno" class="form-control" ">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Usuario </span>
+                        <input type="text" ng-model="empleado.usuario" class="form-control" >
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Contraseña </span>
+                        <input type="text" ng-model="empleado.contrasena" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">Edad </span>
+                        <input type="number" ng-model="empleado.edad" class="form-control" >
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+
+                
+               
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Correo Personal: </span>
+                        <input type="text" class="form-control"  ng-model="empleado.correo">
+                    </div>
+                </div>
+
+            </div>
+
+           
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="Submit" class="btn btn-primary btn-md" value="Guardar"/>
+                    </div>
+                </div>
+         
+
+                
+            </div>
+
+            
+
+                        
+            
+        
+            </form> 
+        </div>
+    </div>
+</div>

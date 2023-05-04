@@ -1,0 +1,305 @@
+<div class="container" ng-init="inicio()" style="width: 100%">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+                 <h3 class="panel-title" >Edita Colaborador</h3>
+        </div>       
+         <div class="panel-body">
+            <form name="forcontacto" novalidate>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">Busqueda</div>
+                  <div class="panel-body">
+
+                    <div class="row">
+
+                          <div class="col-md-6">
+                              <div class="input-group">
+                                <span class="input-group-addon glyphicon glyphicon-user"></span>
+                                <input type="text" class="form-control" ng-model="busca.nombre" placeholder="Nombre">
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <div class="row">
+
+                        <div class="col-md-4">
+
+                            <div class="input-group">
+                                <span class="input-group-addon">División: </span>
+                                <select  class="form-control" ng-model="busca.division" ng-options="div.id as div.nombredivision for div in divisiones">
+                                    <option value="">División</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+
+                            <div class="input-group">
+                                <span class="input-group-addon">Area:</span>
+                                <select  class="form-control" ng-model="busca.area" ng-options="ar.id as ar.nombrearea for ar in areas">
+                                    <option value="">Area</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div ng-show="mensajeempleado" class="alert  animate-show text-center" ng-class="tipoalerta">{{mensajeempleado}}</div>
+
+                      <div class="row">
+                        <div class="col-md-3">
+                                  <button type="button" class="btn btn-primary btn-lg" tooltip-placement="bottom" tooltip="Busqueda dentro de la Clinica" ng-click="BusEmpleado()">Buscar</button>
+                        </div>
+
+                      </div>
+
+                  </div>
+                </div>
+
+              <div class="row" ng-show="consult">
+                  <div class="col-lg-12">
+
+                    <h3> Los primeros 5 Registros </h3>
+
+                    <div class="table-responsive tabla">
+                      <table class="table table-hover table-bordered">
+                        <thead>
+                          <tr class="active">
+                                <th><a href="" ng-click="predicate = 'clave'; reverse=!reverse">Clave Colaborador</a></th>
+                                <th><a href="" ng-click="predicate = 'nombre'; reverse=!reverse">Nombre</a></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr  ng-repeat="emp in empleados | orderBy:predicate2:reverse2 | filter:filtro">
+                                
+                                <td>
+                                  <button type="button" class="btn btn-link" ng-click="siguiente(emp.EMP_claveempleado)">{{emp.EMP_claveempleado}}</button>
+                                </td>
+                                <td>{{emp.EMP_nombre}} {{emp.EMP_paterno}} {{emp.EMP_materno }}</td>
+
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+
+                  </div>
+                </div>
+
+                <div ng-show="editaut">
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">N° Autorizador:</span>
+                            <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.numero">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Fecha Ingreso:</span>
+                            <input type="text" class="form-control" id="fechaingreso" data-date-format="YYYY-MM-DD" name="nom" ng-model="empleado.fechaingreso">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">Puesto:</span>
+                            <input type="text" class="form-control" name="nom" ng-model="empleado.clavenomina">
+                        </div>
+                    </div>
+
+                </div>
+
+                 <br><br>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Nombre: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.nombre">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">A Parteno: </span>
+                        <input type="text" ng-model="empleado.paterno" class="form-control" id="pat" name="pat">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">A Materno: </span>
+                        <input type="text" ng-model="empleado.materno" class="form-control" id="mat" name="mat">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Telefono Celular: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.telefonocel">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Telefono Oficina: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.telefono">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Correo Personal: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.correo">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="input-group">
+                        <span class="input-group-addon">División: </span>
+                        <select  class="form-control  input-lg" ng-model="empleado.division" ng-options="div.id as div.nombredivision for div in divisiones">
+                            <option value="">División</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Area:</span>
+                        <select  class="form-control  input-lg" ng-model="empleado.area" ng-options="ar.id as ar.nombrearea for ar in areas">
+                            <option value="">Area</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Patron:</span>
+                        <select  class="form-control  input-lg" ng-model="empleado.logo" >
+                            <option value="../img/aliato.jpg">Aliato</option>
+                            <option value="../img/ortho.jpg">Orthofam</option>
+                            <option value="../img/MV.jpg">Medica Vial</option>
+                       
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Dias Vacaciones: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.diasvacaciones">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Dias Tomados: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.diastomados">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Dias Restantes: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.diasrestantes">
+                    </div>
+                </div>
+                
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <label>Autorizador Activo:</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="empleado.activo" value="SI" checked>
+                        SI
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="empleado.activo" value="NO">
+                        NO
+                      </label>
+                    </div> 
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Periodo a Disfrutar: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.periododisfrutar">
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Periodo a Vacacional: </span>
+                        <input type="text" class="form-control" id="nom" name="nom" ng-model="empleado.periodovacacional">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                  <label for="descripcion">Observaciones</label>
+                  <textarea name="descripcion" id="descripcion" class="form-control " ng-model="empleado.observacion" rows="5"></textarea>
+                  
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <button type="button"  ng-click="actualizaEmpleado()" ng-disabled="formcontacto.$invalid" class="btn btn-primary btn-lg" > Actualiza Colaborador </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div ng-show="mensajeactempleado" class="alert  animate-show text-center" ng-class="tipoalerta">{{mensajeactempleado}}</div>
+        
+            </form> 
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $('#fechaingreso').datetimepicker({
+
+      pickDate: true,                 //en/disables the date picker
+      pickTime: false,                 //en/disables the time picker     
+      showToday: true,                 //shows the today indicator
+      language:'es'                  //sets language locale
+
+    });
+
+</script>
